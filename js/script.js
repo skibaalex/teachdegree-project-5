@@ -3,8 +3,13 @@
  */
 const getUsers = async () => {
     const response = await fetch('https://randomuser.me/api/?results=12')
+
+
+    
     return await response.json()
 }
+
+
 
 
 /**
