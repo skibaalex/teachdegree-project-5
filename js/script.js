@@ -111,7 +111,6 @@ const renderEmployees = (employees) => {
     const gallery = document.getElementById('gallery')
     gallery.innerHTML = ''
     employees.forEach(employee => {
-        console.log(employee)
         const html = `
         <div class="card-img-container">
             <img class="card-img" src="${employee.picture.large}" alt="profile picture">
