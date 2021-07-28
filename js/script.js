@@ -36,7 +36,7 @@ const getModalHtml = (employee, animate) => {
             <p class="modal-text cap">${employee.location.city}</p>
             <hr>
             <p class="modal-text">${formatPhoneNUmber(employee.phone)}</p>
-            <p class="modal-text">${location.street.number} ${location.street.name}, ${location.city}, ${location.state} ${location.postcode}</p>
+            <p class="modal-text">${location.street.number} ${location.street.name}, ${location.city}, ${location.country !== "United States" ? location.country : `${location.state} ${location.postcode}` } </p>
             <p class="modal-text">Birthday: ${formatDate(employee.dob.date)}</p>
         </div>
     </div>
@@ -111,6 +111,7 @@ const renderEmployees = (employees) => {
     const gallery = document.getElementById('gallery')
     gallery.innerHTML = ''
     employees.forEach(employee => {
+        console.log(employee)
         const html = `
         <div class="card-img-container">
             <img class="card-img" src="${employee.picture.large}" alt="profile picture">
@@ -118,7 +119,7 @@ const renderEmployees = (employees) => {
         <div class="card-info-container">
             <h3 id="name" class="card-name cap">${employee.name.first} ${employee.name.last}</h3>
             <p class="card-text">${employee.email}</p>
-            <p class="card-text cap">${employee.location.city}, ${employee.location.state}</p>
+            <p class="card-text cap">${employee.location.city}</p>
         </div>
         `
         const div = document.createElement('div')
