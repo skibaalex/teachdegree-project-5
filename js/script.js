@@ -6,7 +6,7 @@ let employees = [];
 const getemployees = async () => {
   const gallery = document.getElementById("gallery");
   gallery.innerHTML = "<h2 class='card-name'>Loading ...</h2>";
-  const response = await fetch("https://randomuser.me/api/?results=12");
+  const response = await fetch("https://randomuser.me/api/?results=12&nat=us");
   return await response.json();
 };
 
@@ -41,11 +41,7 @@ const getModalHtml = (employee, animate) => {
             <p class="modal-text">${formatPhoneNUmber(employee.phone)}</p>
             <p class="modal-text">${location.street.number} ${
     location.street.name
-  }, ${location.city}, ${
-    location.country !== "United States"
-      ? location.country
-      : `${location.state} ${location.postcode}`
-  } </p>
+  }, ${location.city}, ${location.state} ${location.postcode}</p>
             <p class="modal-text">Birthday: ${formatDate(employee.dob.date)}</p>
         </div>
     </div>
@@ -172,6 +168,7 @@ const initializeApp = () => {
   getemployees()
     .then((data) => {
       employees = data.results;
+      console.log(employees);
       renderEmployees(employees);
     })
     .catch((err) => {
